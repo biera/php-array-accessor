@@ -1,0 +1,21 @@
+{
+    "name": "biera/array-accessor",
+    "description": "utils for accessing object's graph with ease",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kuba Biernacki",
+            "email": "kubiernacki@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Biera\\": "src" },
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
