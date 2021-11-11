@@ -32,7 +32,7 @@ class ArrayAccessorTest extends TestCase
      */
     public function itRaisesErrorOnSet()
     {
-        $this->expectException(\LogicException::class);
+        $this->expectException(LogicException::class);
         $this->expectExceptionMessage('Read only');
         $address = new Address('Cracow', '30-701', 'Zabłocie 43A');
         $address['city'] = 'Lublin';
@@ -44,19 +44,19 @@ class ArrayAccessorTest extends TestCase
      */
     public function itRaisesErrorOnUnset()
     {
-        $this->expectException(\LogicException::class);
+        $this->expectException(LogicException::class);
         $this->expectExceptionMessage('Read only');
         $address = new Address('Cracow', '30-701', 'Zabłocie 43A');
         unset($address['city']);
     }
 }
 
-class Pet implements \ArrayAccess
+class Pet implements ArrayAccess
 {
     use ArrayAccessor;
 
-    private $name;
-    private $owner;
+    private string $name;
+    private Human $owner;
 
     public function __construct(string $name, Human $owner)
     {
@@ -70,12 +70,12 @@ class Pet implements \ArrayAccess
     }
 }
 
-class Human implements \ArrayAccess
+class Human implements ArrayAccess
 {
     use ArrayAccessor;
 
-    private $name;
-    private $address;
+    private string $name;
+    private Address $address;
 
     public function __construct(string $name, Address $address)
     {
@@ -84,7 +84,7 @@ class Human implements \ArrayAccess
     }
 }
 
-class Address implements \ArrayAccess
+class Address implements ArrayAccess
 {
     use ArrayAccessor;
 
