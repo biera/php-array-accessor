@@ -4,7 +4,7 @@ namespace Biera;
 
 trait ArrayAccessor
 {
-    private static $reflectedProperties;
+    private static ?array $reflectedProperties = null;
 
     private function getReflectedProperties(): array
     {
@@ -35,24 +35,25 @@ trait ArrayAccessor
         );
     }
 
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
-        return \in_array(
+        return in_array(
             $offset, $this->getReflectedProperties()
         );
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->{$offset};
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         throw new \LogicException('Read only');
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         throw new \LogicException('Read only');
     }
